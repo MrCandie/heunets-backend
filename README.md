@@ -34,26 +34,11 @@ Each user is uniquely identified using their browser fingerprint (via Fingerprin
 
 - CORS
 
-## Project Structure
-
-backend/
-├── models/
-│ └── workItemModel.js # Mongoose schema for work items
-│
-├── routes/
-│ └── workItemRoutes.js # All API routes
-│
-├── controllers/
-│ └── workItemController.js # Business logic for CRUD operations
-│
-├── server.js # Main entry point
-└── .env.example # Environment variable example
-
 ## Setup Instructions
 
 1. Clone the Repository
-   git clone https://github.com/yourusername/work-items-backend.git
-   cd work-items-backend
+   git clone https://github.com/MrCandie/heunets-backend
+   cd heunets-backend
 
 2. Install Dependencies
    npm install
@@ -62,8 +47,7 @@ backend/
 
 Create a .env file in the root directory:
 
-PORT=5000
-MONGO_URI=mongodb+srv://your_user:your_password@cluster.mongodb.net/workitems
+PORT=4000
 
 (Optional)
 
