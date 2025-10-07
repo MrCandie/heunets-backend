@@ -2,7 +2,6 @@ import * as workItemService from "../services/workItems.service.js";
 
 export const getAllWorkItems = async (req, res) => {
   try {
-    console.log(req.query);
     if (!req.query) return res.status(400).json({ error: "Invalid query" });
     const { userId } = req.query;
     if (!userId) return res.status(400).json({ error: "Invalid user ID" });
@@ -14,7 +13,9 @@ export const getAllWorkItems = async (req, res) => {
       data: items,
     });
   } catch (err) {
-    res.status(500).json({ error: "Failed to fetch work items" });
+    res
+      .status(500)
+      .json({ error: err.message || "Failed to fetch work items" });
   }
 };
 

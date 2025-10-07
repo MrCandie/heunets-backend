@@ -19,7 +19,10 @@ app.get("/", (req, res) => {
 app.use("/api/work-items", workItemRoutes);
 
 app.all(/.*/, (req, res, next) => {
-  next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
+  const error = new Error(`Can't find ${req.originalUrl} on this server`);
+  error.statusCode = 404;
+  error.status = "fail";
+  throw error;
 });
 
 const PORT = process.env.PORT || 4000;
@@ -27,7 +30,7 @@ const db = process.env.DATABASE;
 
 async function startServer() {
   try {
-    const response = await mongoose.connect(db);
+    await mongoose.connect(db);
     console.log("database connection successful");
 
     app.listen(PORT, () => {
